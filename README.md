@@ -13,6 +13,10 @@ Abra o arquivo `index.html` no navegador. Não precisa instalar nada.
 - `script.js`: questões, nota, sons, carrossel e paletas de cores
 - `imagens/`: figuras das questões e imagens do carrossel
 
+- Alunos
+- https://github.com/leotosta1 Leonardo Tosta
+- https://github.com/erickhenry064 Erick Henrique
+
 ## Publicar no GitHub Pages
 
 Em *Settings → Pages*, escolha a branch `main` e a pasta `/ (root)`.
