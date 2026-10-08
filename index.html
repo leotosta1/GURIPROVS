@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guriprovs · Prova Interativa UniBRAS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <div class="barra-topo">
+    <div class="paletas" id="paletas" role="group" aria-label="Paleta de cores"></div>
+    <button class="chip-btn" id="btn-som" type="button" aria-pressed="true">Som ligado</button>
+  </div>
+
+  <header class="hero">
+    <p class="kicker">O melhor site para realizar provas online</p>
+    <h1 class="marca-nome" id="marca-nome" aria-label="Guriprovs">
+      <span class="nome-inner" id="nome-inner" aria-hidden="true"></span>
+    </h1>
+    <div class="marca-sub">Prova Tipo (A) · UniBRAS · Centro Universitário Montes Belos</div>
+  </header>
+
+  <section id="tela-inicio" class="tela">
+    <p class="etiqueta">Trabalho</p>
+    <h2 class="titulo-prova">Introdução à Programação Estruturada</h2>
+    <p class="sub">Prof. Paulo Victor de Morais</p>
+
+    <div class="carrossel" id="carrossel" role="region" aria-roledescription="carrossel" aria-label="Imagens sobre programação">
+      <div class="slides" id="slides">
+        <div class="slide"><img src="imagens/slide-1.jpg" alt="Ilustração 3D de um editor de código com pastas, lupa e lâmpada"></div>
+        <div class="slide"><img src="imagens/slide-2.jpg" alt="Notebook com código na tela e um copo de café, em ilustração roxa"></div>
+        <div class="slide"><img src="imagens/slide-3.jpg" alt="Editor de código mostrando sugestões de autocompletar"></div>
+      </div>
+      <button class="seta ant" id="seta-ant" type="button" aria-label="Imagem anterior">‹</button>
+      <button class="seta prox" id="seta-prox" type="button" aria-label="Próxima imagem">›</button>
+      <div class="pontos" id="pontos-car"></div>
+    </div>
+
+    <ul class="regras">
+      <li><strong>6</strong> questões objetivas</li>
+      <li>Cada questão vale <strong>1 ponto</strong></li>
+      <li>Aprovado com nota <strong>≥ 6</strong></li>
+    </ul>
+
+    <label class="campo" for="nome">Seu nome
+      <input type="text" id="nome" placeholder="Digite seu nome" maxlength="40" autocomplete="off">
+    </label>
+    <button id="btn-iniciar" class="btn" type="button">Iniciar prova</button>
+  </section>
+
+  <section id="tela-prova" class="tela" hidden>
+    <div class="progresso-info"><span id="contador">Questão 1 de 6</span><span id="pontos">Pontos: 0</span></div>
+    <div class="barra"><div id="barra-preenchida"></div></div>
+    <h2 id="enunciado"></h2>
+    <figure class="fig"><img id="fig-img" src="imagens/fig-1.jpg" alt=""></figure>
+    <div id="alternativas"></div>
+    <div id="feedback" class="feedback" aria-live="polite"></div>
+    <button id="btn-proxima" class="btn" type="button" disabled>Confirmar resposta</button>
+  </section>
+
+  <section id="tela-resultado" class="tela" hidden>
+    <p class="etiqueta" id="res-nome"></p>
+    <div class="veredito">
+      <div id="selo" class="selo"></div>
+      <div class="conceito">
+        <div id="nota-letra" class="nota-letra g-F" role="img" aria-label="Conceito"><span id="letra-valor">F</span></div>
+        <span class="conceito-rotulo">Nota</span>
+      </div>
+    </div>
+    <h2 id="res-nota"></h2>
+    <p id="res-msg" class="sub"></p>
+    <h3>Revisão das questões</h3>
+    <div id="revisao"></div>
+    <button id="btn-refazer" class="btn" type="button">Refazer prova</button>
+
+    <div class="avaliacao">
+      <h3>Avalie a prova</h3>
+      <p class="sub">Quantas estrelas você dá para a sua experiência?</p>
+      <div class="estrelas" id="estrelas" role="radiogroup" aria-label="Avaliação de 1 a 5 estrelas">
+        <button class="estrela" type="button" role="radio" aria-checked="false" aria-label="1 estrela">★</button>
+        <button class="estrela" type="button" role="radio" aria-checked="false" aria-label="2 estrelas">★</button>
+        <button class="estrela" type="button" role="radio" aria-checked="false" aria-label="3 estrelas">★</button>
+        <button class="estrela" type="button" role="radio" aria-checked="false" aria-label="4 estrelas">★</button>
+        <button class="estrela" type="button" role="radio" aria-checked="false" aria-label="5 estrelas">★</button>
+      </div>
+      <p class="sub" id="av-msg" aria-live="polite"></p>
+    </div>
+
+    <div class="contato">
+      <h3>Contrate o Guriprovs</h3>
+      <p class="contato-titulo">Quer nos contratar para fazer o questionário da sua prova?</p>
+      <p class="sub">Mande uma mensagem para este e-mail e faremos o seu questionário.</p>
+      <div class="email-linha">
+        <code id="email-txt">guriprovs@outlook.com</code>
+        <button class="btn btn-sec" id="btn-copiar" type="button">Copiar e-mail</button>
+      </div>
+      <p class="sub" id="copiar-msg" aria-live="polite"></p>
+      <a class="link-email" href="mailto:guriprovs@outlook.com">Abrir no aplicativo de e-mail</a>
+    </div>
+
+    <div class="confete" id="confete" aria-hidden="true"></div>
+  </section>
+
+  <section id="como-funciona" class="editor" aria-label="Como funciona">
+    <div class="editor-barra"><i></i><i></i><i></i><span>como-funciona.js</span></div>
+    <pre><code><span class="l"><span class="t-com">// 1. Digite seu nome e inicie a prova</span></span><span class="l"><span class="t-com">// 2. Marque uma alternativa e confirme</span></span><span class="l"><span class="t-com">// 3. Veja na hora se acertou</span></span><span class="l"><span class="t-com">// 4. No fim, nota e revisão de cada questão</span></span><span class="l"><span class="t-kw">const</span> questoes = <span class="t-num">6</span>;</span><span class="l"><span class="t-kw">const</span> pontosPorQuestao = <span class="t-num">1</span>;</span><span class="l"><span class="t-kw">if</span> (nota &gt;= <span class="t-num">6</span>) { resultado = <span class="t-str">"APROVADO"</span>; }</span><span class="l"><span class="t-kw">else</span> { resultado = <span class="t-str">"REPROVADO"</span>; }</span><span class="l"><span class="t-fn">console</span>.<span class="t-fn">log</span>(resultado);</span></code></pre>
+  </section>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
